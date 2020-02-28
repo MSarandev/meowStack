@@ -8,9 +8,6 @@ services:
     volumes:
       - ".:/var/www/html"
     working_dir: /var/www/html
-    ports:
-      - "8181:80"
-      - "4441:443"
     networks:
       - meowStack_internal
       - meowStack_external
