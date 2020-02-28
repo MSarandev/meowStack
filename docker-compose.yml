@@ -10,20 +10,31 @@ services:
     working_dir: /var/www/html
     ports:
       - "8181:80"
-      - "4432:443"
+      - "4441:443"
     networks:
       - meowStack_internal
       - meowStack_external
-  phpunit:
-    container_name: meowStack_phpunit
+  web:
     build:
       context: .
-      dockerfile: docker/phpunit/Dockerfile
+      dockerfile: docker/web/Dockerfile
     working_dir: /var/www/html
+    ports:
+      - "8089:80"
     volumes:
-      - "./:/var/www/html/"
+      - ".:/var/www/html"
     networks:
       - meowStack_external
+#  phpunit:
+#    container_name: meowStack_phpunit
+#    build:
+#      context: .
+#      dockerfile: docker/phpunit/Dockerfile
+#    working_dir: /var/www/html
+#    volumes:
+#      - "./:/var/www/html/"
+#    networks:
+#      - meowStack_external
   mailhog:
     container_name: meowStack_mailhost
     image: mailhog/mailhog:latest
@@ -35,15 +46,18 @@ services:
   db:
     image: mysql:5.7
     container_name: meowStack_db
+    build:
+      context: docker
+      dockerfile: database/Dockerfile
     ports:
-      - "3378:3306"
+      - "3379:3306"
+    volumes:
+      - "./docker/db:/var/lib/mysql"
     networks:
       - meowStack_internal
 networks:
   meowStack_internal:
-    internal:
-      name: meowStack_internal
+    internal: true
   meowStack_external:
     external:
       name: meowStack_external
-    driver: bridge
