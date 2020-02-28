@@ -42,4 +42,12 @@ List of currently used APIs:
     * `docker network create meowStack_external`
 * Run `docker-compose up --build`
 
+Go inside the container (app) <br>
+`docker-compose exec app bash`
+
+From inside the container:
+* `composer install`
+* `php artisan key:generate`
+
+
 Enjoy :)
