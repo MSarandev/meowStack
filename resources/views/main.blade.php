@@ -19,13 +19,23 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+    <!-- Mapping -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    <!-- Mapping -->
 
     <!-- Styles -->
     <style>
@@ -95,11 +105,8 @@
 <div class="container-fluid justify-content-center">
     <div class="row h-90">
         <div class="col vh-100 justify-content-center">
-            <div class="d-flex justify-content-center h-100">
-                <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=12.322674393653871%2C52.20758694889957%2C13.956890702247621%2C52.753730310608944&amp;layer=transportmap"
-                        style="width: 100%;">
-                </iframe>
-            </div>
+            @component('components.map')
+            @endcomponent
         </div>
         <div class="col-2 vh-100 justify-content-center bg-dark">
             <div class="d-flex justify-content-center h-100">
@@ -108,16 +115,20 @@
                         <h3 class="align-self-center">Selectables</h3>
                     </div>
                     <div class="row w-100">
-                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1">Primary</button>
+                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1">Primary
+                        </button>
                     </div>
                     <div class="row w-100">
-                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1">Primary</button>
+                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1">Primary
+                        </button>
                     </div>
                     <div class="row w-100">
-                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1">Primary</button>
+                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1">Primary
+                        </button>
                     </div>
                     <div class="row w-100">
-                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1">Primary</button>
+                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1">Primary
+                        </button>
                     </div>
                 </div>
             </div>
