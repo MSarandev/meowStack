@@ -15,7 +15,7 @@ class BusStop
     public function __construct()
     {
         // Set the URL
-        $this->setUrl(env('API_PATH').'/stops?weight=60');
+        $this->setUrl(env('API_PATH') . '/stops?weight=60');
     }
 
     /**

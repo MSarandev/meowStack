@@ -19,11 +19,24 @@ class BusStopRepo
 
     public function getAllBusStops()
     {
-        // Get the data
-        $data = $this->guzzle->callApi('GET', $this->model->getUrl());
-        $data = str_replace("\n", ',', $data);
-        $data = '[' . rtrim($data, ',') . ']';
+        $returnStack = [];
+        $formattedReturn = [];
 
-        return json_decode(rtrim($data, ','), true);
+        // Get the data
+        for ($i = 0; $i<100; $i+=10) {
+            $this->model->setUrl(env('API_PATH') . '/stops?weight=' . $i);
+
+            $data = $this->guzzle->callApi('GET', $this->model->getUrl());
+
+            $data = str_replace("\n", ',', $data);
+
+            $returnStack[] = '[' . rtrim($data, ',') . ']';
+        }
+
+        foreach ($returnStack as $item) {
+            $formattedReturn += json_decode(rtrim($item, ','), true);
+        }
+
+        return $formattedReturn;
     }
 }

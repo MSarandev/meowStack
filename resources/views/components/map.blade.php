@@ -20,7 +20,8 @@
     // Marker data
     <?php
     foreach ($data as $stop) {
-        echo "L.marker([" . $stop['location']['latitude'] . ", " . $stop['location']['longitude'] . "]).addTo(MAP);";
+        echo "L.marker([" . $stop['location']['latitude'] . ", " . $stop['location']['longitude'] .
+            "]).bindPopup('" . $stop['name'] . "').openPopup().addTo(MAP);";
     }
     ?>
 
