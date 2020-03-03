@@ -3,15 +3,28 @@
 </div>
 
 <script>
-    //https://www.openstreetmap.org/export/embed.html?bbox=12.322674393653871%2C52.20758694889957%2C13.956890702247621%2C52.753730310608944&amp;layer=transportmap
+    const CENTER_LAT = '52.5097';
+    const CENTER_LON = '13.2133';
+    const CENTER_ZOOM = '10';
+    // -----------------------
+
 
     // initialize the map on the "map" div with a given center and zoom
-    let map = L.map('mapMain').setView([52.5097, 13.2133], 10);
+    const MAP = L.map('mapMain').setView([CENTER_LAT, CENTER_LON], CENTER_ZOOM);
     //https://www.openstreetmap.org/#map=10/52.5097/13.2133&layers=T
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?layer=transportmap', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    }).addTo(MAP);
 
-    var marker = L.marker([51.5, -0.09]).addTo(map);
+    // Marker data
+    <?php
+    foreach ($data as $stop) {
+        echo "L.marker([" . $stop['location']['latitude'] . ", " . $stop['location']['longitude'] . "]).addTo(MAP);";
+    }
+    ?>
+
+    function recenterMap() {
+        MAP.setView([CENTER_LAT, CENTER_LON], CENTER_ZOOM);
+    }
 </script>

@@ -105,17 +105,22 @@
 <div class="container-fluid justify-content-center">
     <div class="row h-90">
         <div class="col vh-100 justify-content-center">
-            @component('components.map')
+            @component('components.map', ['data' => $data])
             @endcomponent
         </div>
         <div class="col-2 vh-100 justify-content-center bg-dark">
             <div class="d-flex justify-content-center h-100">
                 <div class="col w-100 justify-content-center">
                     <div class="row w-100 justify-content-center mt-1 mb-2">
+                        <img src="https://placebear.com/300/200" class="w-100 h-100">
+                    </div>
+                    <div class="row w-100 justify-content-center mt-1 mb-2">
                         <h3 class="align-self-center">Selectables</h3>
                     </div>
                     <div class="row w-100">
-                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1">Primary
+                        <button type="button" class="btn btn-outline-light w-100 align-self-center mb-1 mt-1"
+                                id="recenter_map_btn" onclick="recenterMap()">
+                            Re-center map
                         </button>
                     </div>
                     <div class="row w-100">

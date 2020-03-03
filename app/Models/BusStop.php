@@ -4,12 +4,35 @@ namespace App\Models;
 
 class BusStop
 {
+    public $url;
     public $type;
     public $id;
     public $name;
     public $latitude;
     public $longitude;
     public $weight;
+
+    public function __construct()
+    {
+        // Set the URL
+        $this->setUrl(env('API_PATH').'/stops?weight=60');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param mixed $url
+     */
+    public function setUrl($url): void
+    {
+        $this->url = $url;
+    }
 
     /**
      * @return mixed
